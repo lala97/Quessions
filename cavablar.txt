@@ -1,0 +1,272 @@
+Sual 1 
+<?php
+$result=5;
+function changeValue($result)
+{
+    $result++;
+    echo $result;
+}
+ changeValue($result);
+?>
+
+<?php
+function changeValue(&$var)
+{
+    $var++;
+}
+
+$result=5;
+$result2=7;
+changeValue($result2);
+changeValue($result);
+
+echo $result2; // $result is 6 here
+echo $result;  // result is 8 here
+?>
+ burada &$var yazilisindaki & isaresi bir nov flexible xususiyyeti dawiyir.Birinci function-da her defe ayri-ayri  variable oturmek lazim idi funksiya daxiline ama awagidaki functionda isteinilen qeder variable oturub cavab almaq olar Numune yuxarida gosterilib.
+=======================================================================================================
+Sual 2 
+
+<?php
+$a = 'hello';
+$$a = 'world';
+ echo "$a ${$a}";
+?>
+ $$a  yazilisi eyni adli variable-dan istifade etmek ucun lazimdir yeni $a-ni ayri ayri yerde ferqli deyerlerle istifade etmek ucun gereklidir
+================================================================================================
+Suall 3 
+  $var = "yes";
+ 
+if(isset($var)) {
+ 
+echo "true";
+ 
+}
+else
+{
+echo "false";
+}
+?>
+isset funksiyasi $var deyerinin içi boş bele olsa tanidildigi ucun TRUE deyerini qaytaracaq.$var verilmeseydi FALSE deyerini qaytaracaqdi.
+================================================================================================
+
+Sual 4 
+serialize() funksiyonu PHP deyerlerini type-ni itirmeden saxlamaq veya oturmek için istifade olunur.
+========================================================================================================
+Sual 6
+Cavab : 
+<?php
+$juice = "apple";
+echo "<q>He drank some $juice juice.</q>";
+==========================================================================================================
+Sual 7 
+unlink() funksiyasi her hansi fayli silir.Meselen : folderimizdeki silmek istediyimiz image-lei silmek icin istifade olunur.Lakin unset() funksiyasi her hansi teyin etdiyimiz session-lari deaktiv etmek ucun istfade oluna biler.
+
+======================================================================================================
+Sual 8
+Cavab B  array_column() vasitesile arrayin istenilen column-u secib hemin column-daki deyerli ekrana yazdira bilerik.
+
+============================================================================================================
+
+Sual 9 
+<script type="text/javascript">
+   var word = "Code Academy 2016";
+   var say=0;
+   for (var i=0; i <word.length; i++) {
+      var sayi=word.substring(0,i);
+      say++;
+   }
+   document.write(say);
+
+</script>
+==========================================================================================================
+sual 10 
+$x = true and false;
+       var_dump($x);
+cavab true 
+Sebeb: = operatoru yerine yetirilme ardicilliqina gore true verir eger "$x = false and true;" yazsaq cavab false olacaq.
+?>
+===========================================================================================================
+Sual 11 
+$x = NULL;
+     if ('0xFF' == 255) {
+    $x = (int)'0xFF';
+}      
+Cavab : 0; cunki 0xFF 16-lik say sisteminde 255 8-lik say sistemine = olduqundan if serti true verir ve $x(int) olduqundan cavab null deyil 0 verecek.
+=============================================================================================================
+sual 12
+	$i = 016;
+    echo $i / 2;
+cavab: 7; Cunki 16 onluq say sistemidir ve qarsisindaki 0 onu 8-lik say sistemine kecirir ve 016 ededini onluq say sisteminden 8-lik say sistemine kecirerken cavab 14 verir 14 / 2 ise 7 verir.
+==============================================================================================================
+sual 14
+static ve final keywordleri haqqinda qisaca yazin.(izah edin);
+
+final keyword-i istifade edilen class-lar yalniz 1 defe istifade olunur.hetta bawqa bir class-a extend edildiyi zaman hemin class-in cavabi error olur cunki final clas-i artq istifade edilmiw olur.
+
+Static xususiyyetine sahib olan class daxilinde variable veya function eyni bir deyere sahib olur ve herdefe eynideyer qaytarir buna gore her class daxilinde static xususiyyetini istifade etmek duzgun deyildr.Hemde static
+teyin olunmuw  class daxilindekiler ramda saxlanilir. bu ozelliye sahib olanlara muraciet etmek ucun class tein etmek lazim deyil meselen :
+<?php
+class examp
+{
+    private static $name = 'ferid';
+ 
+    public static function exxampRead() 
+    {
+        echo self::$name;
+    }
+}
+ 
+examp::exampRead(); 
+?>
+
+birde burdaa muraaciet ucun $this-den istifaade yerine self -den istfade olunur.
+============================================================================================================
+sual 15
+
+Private istifade etdiyimiz zaman meselen "private $name" $name-e class xariicnde muraciet etmek olmur yalniz herhansi public funtion daxilinde qeyd edib class xaricinde hemin functionu cagirmaqlaa ekrana $name-in deyyerini yazdira bilerik. Mes:
+<?php
+class examp
+{
+    private $name = 'lala';
+ 
+    public function exampRead()
+    {
+        echo $this->$name;
+    }
+}
+ 
+$examp = new exam;
+$exam->exampRead();
+?>
+
+Protected istifadesi ise eynile Private -e benzeyir ama tek ferq bawqa bir class-a examp class-ni extend elesek o zaman protected $name -i ekrana yazdira bilerik lakin private $name olsa extend olunmuw classda belee ona muraciet etmek olmur 
+=============================================================================================================
+Sual 16
+
+traitler class xaricinde yazilmis umumilesmiw xususiyyetdir.Class xaricinde tanitmaqla bir nece class icerisinde 
+istifade ede bilerik Mes:
+<?php
+
+trait examp {
+    public function read1() {
+        echo "result";
+    }
+}
+ 
+class examp {
+    use examp;
+}
+ 
+$examp= new examp;
+$examp->read1();
+?>
+
+==============================================================================================================
+sual 17 
+<?php
+
+ class database
+ {
+    public $host;
+    public $username;
+    public $password;
+    public $db;
+    public $connect;
+    function __construct($host,$username,$password,$db)
+    {
+      $this->host=$host;
+      $this->username=$username;
+      $this->password=$password;
+      $this->db=$db;
+
+    }
+
+    public function connect(){
+      $this->connect=mysqli_connect($this->host,$this->username,$this->password,$this->db);
+
+        if ($this->connect) {
+        
+        }
+        else {
+           echo "error";
+        }
+   }
+===========================================================================================================
+Sual 18 
+ Lesson-a verdiyimiz dəyər class daxilində __construct funksiyasi terefinden oxunacaq.
+==============================================================================================================
+sual 19:
+<?php
+   function hesablama($a,$b,$c){
+      if ($c =="+") {
+         echo $a + $b ." like this";
+      }
+      elseif ($c =="-") {
+         echo $a - $b ." like this :D";
+      }
+      elseif ($c =="*") {
+         echo $a * $b ." like this :/";
+      }
+      elseif ($c =="/") {
+         if ($a==0) {
+            echo " 0-a bolmek olmaz";
+         }
+         else {
+            echo $a/$b ." :D";
+         }
+      }
+   }
+   hesablama(16,2,"+");
+ ?>
+============================================================================================================
+Sual 20
+_sleep və _wakeup arasında fərqi izah edin.
+cavab: _sleep ile kodlarin islemesini mueyyen bir vaxt erzinde dayandira bilerik. Refresh- gecikdirir isteyimiz vaxt qeder.
+
+_wakeup 
+============================================================================================================
+Sual 21
+
+unset () funksiyasi 
+============================================================================================================
+sual 23 
+https://www.google.az/
+============================================================================================================
+sual 24
+$file=$_FILES['sekil']['tmp_name'];
+    $fileName=$_FILES['sekil']['name'];
+    $target_dir="uploads/";
+  	$target_file = $target_dir.date('dmYGis').basename($_FILES["sekil"]["name"]);
+  	echo "$target_file";
+    $fileType = pathinfo($target_file, PATHINFO_EXTENSION);
+  	 chmod("uploads/", 0777);
+	if ( $fileType=="jpg" || $fileType=="png" || $fileType=="gif") {
+			move_uploaded_file($file, $target_file);
+			header('Location:index.php');
+		}
+	else{
+		echo "Bu fayl uygun deyl";
+	}
+=============================================================================================================
+Sual 25
+
+.= operatoru birlewdirme xususiyyeti dawiyir.
+ <?php
+$txt1 = "Hello";
+$txt2 = " world!";
+$txt1 .= $txt2;
+echo $txt1;
+?>  ekrana hello world cixacaq.
+
+" . " ekrana ardicilliqla istenilen stringi ve yaxudda variable ardicilliqla ekrana cixarmaq ucun istifade olunur(javascriptde + kimi)
+==============================================================================================================
+sual 28
+formlarda istifade olunur formda action daxilinde $_PHP_SELF yazdiqimiz zaman  form daxilinde proseslerin neticelerini ozu-ozune yonlendirir.
+================================================================================================================
+sual 29
+eger classda interface-den istifade ediremse classi teyin etdiyim interface-e uygun olaraq hereket etmelidi yeni sertlerine uymalidir ve bu boyuk proektlerde istifade olunur.
+================================================================================================================
+sual 30
+ php-de mail gondermek ucun mail() funksiyasindan istifade olunur 3 parametr ile isleyir 1-ci parametr gondereceyimiz sexsin maili 2-ci parametr mailin movzusu 3-cu parametr mesaj...:D
+
